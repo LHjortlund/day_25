@@ -37,7 +37,6 @@ from numpy.ma.extras import average
 #Get data in the row
 # print(data[data.day == "Monday"])
 
-
 #Which row has the maximum temperature
 # print(data[data.temp == data.temp.max()])
 #
@@ -50,15 +49,31 @@ from numpy.ma.extras import average
 # print(f"{monday_temp_F} Fahrenheit")
 
 #create a dataframe from scratch
+# data_dict = {
+#     "students": ["Anders", "Annika", "Agnes", "Anton"],
+#     "scores": [62, 68, 66, 64]
+# }
+#
+# data = pandas.DataFrame(data_dict)
+# data.to_csv("new_data.csv")
+# print(data)
+
+squirrel_data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+grey_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Gray"])
+cinnamon_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Cinnamon"])
+black_squirrel_count = len(squirrel_data[squirrel_data["Primary Fur Color"] == "Black"])
+
+print(grey_squirrel_count)
+print(cinnamon_squirrel_count)
+print(black_squirrel_count)
+
 data_dict = {
-    "students": ["Anders", "Annika", "Agnes", "Anton"],
-    "scores": [62, 68, 66, 64]
+    "Fur Color" : ["Gray", "Cinnamon", "Black"],
+    "Count": [grey_squirrel_count, cinnamon_squirrel_count, black_squirrel_count]
 }
 
-data = pandas.DataFrame(data_dict)
-data.to_csv("new_data.csv")
-print(data)
-
+df = pandas.DataFrame(data_dict)
+df.to_csv("squirrel_count.csv")
 
 
 
